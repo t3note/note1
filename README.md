@@ -16,21 +16,4 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION
 ```
 使用“flush privileges;”命令刷新刚才修改的权限，使其生效。
 
-## vmware转kvm
-将vmdk和vmx传到kvm主机：
-```
-qemu-img convert '/home/test/桌面/Metasploitable.vmdk' -f vmdk -O qcow2 '/home/test/桌面/Metasploitable.qcow2'
-```
-下载vmware2libvirt.tar.gz（https://github.com/t3note/note1/blob/master/file/vmware2libvirt.tar.gz）到kvm主机
-```
-tar -zxvf vmware2libvirt.tar.gz
-cd vmware2libvirt
-chmod 777 *
-./vmware2libvirt -f /home/test/桌面/Metasploitable.vmx > /home/test/桌面/Metasploitable.xml
 
-cd /home/test/桌面/
-```
-修改Metasploitable.xml中`<emulator>/usr/bin/kvm</emulator>`为`<emulator>/usr/libexec/qemu-kvm</emulator>`
-```
-virsh -c qemu:///system define Metasploitable.xml
-```
