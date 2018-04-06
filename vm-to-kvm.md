@@ -41,6 +41,8 @@ virsh list --all
 xp参照这个https://blog.csdn.net/tianci_zzz/article/details/73896955
 
 ## windows下
+先安装Qemu。
+1.bat
 ```
 :: Convert VMDK to QCOW2
 :: 需要 Qemu 和 VMWare
