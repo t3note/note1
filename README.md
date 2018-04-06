@@ -16,4 +16,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION
 ```
 使用“flush privileges;”命令刷新刚才修改的权限，使其生效。
 
+qcow2压缩办法：
+```
+qemu-img convert -c -O qcow2 win.qcow2 ocr.qcow2
+```
+其中ocr.qcow2是你的目标镜像
+
+
 
