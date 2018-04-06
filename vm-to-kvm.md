@@ -1,10 +1,12 @@
 ## linux
+
 参考http://linux-hacking-guide.blogspot.com/2015/05/convert-vmware-virtual-machine-to-kvm.html
+
 将vmdk和vmx传到kvm主机：
 ```
 qemu-img convert '/home/test/桌面/Metasploitable.vmdk' -f vmdk -O qcow2 '/home/test/桌面/Metasploitable.qcow2'
 ```
-下载vmware2libvirt.tar.gz（https://github.com/t3note/note1/blob/master/file/vmware2libvirt.tar.gz）到kvm主机
+下载vmware2libvirt.tar.gz(https://github.com/t3note/note1/blob/master/file/vmware2libvirt.tar.gz)到kvm主机
 ```
 tar -zxvf vmware2libvirt.tar.gz
 cd vmware2libvirt
