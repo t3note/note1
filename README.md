@@ -20,3 +20,9 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION
 将vmdk和vmx传到kvm主机：
 qemu-img convert '/home/test/桌面/Metasploitable.vmdk' -f vmdk -O qcow2 '/home/test/桌面/Metasploitable.qcow2'
 
+下载vmware2libvirt.tar.gz（https://github.com/t3note/note1/blob/master/file/vmware2libvirt.tar.gz）到kvm主机
+tar -zxvf vmware2libvirt.tar.gz
+cd vmware2libvirt
+chmod 777 *
+./vmware2libvirt -f /home/test/桌面/Metasploitable.vmx > /home/test/桌面/Metasploitable.xml
+
