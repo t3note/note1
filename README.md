@@ -22,5 +22,12 @@ qemu-img convert -c -O qcow2 win.qcow2 ocr.qcow2
 ```
 其中ocr.qcow2是你的目标镜像
 
+```
+打包压缩
+tar -zcvf AWD.tar.gz AWD/
+解压
+tar -zxvf AWD.tar.gz
+```
+
 
 
