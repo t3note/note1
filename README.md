@@ -28,6 +28,16 @@ tar -zcvf AWD.tar.gz AWD/
 解压
 tar -zxvf AWD.tar.gz
 ```
-
+shell屏蔽错误的输出：
+```
+echo "test" > /root/file 2>/dev/null
+上面的命令执行，会首先>/root/file创建文件，发现没权限便报错直接退出，不会继续其他操作
+    （echo "test" > /root/file）2>/dev/null
+这个就会把（）里面的所有错误输出导向/dev/null
+```
+shell屏蔽所有输出：
+```
+（echo "test" > /root/file）2>/dev/null >/dev/null 
+```
 
 
