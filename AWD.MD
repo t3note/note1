@@ -75,10 +75,10 @@ while($code = file_get_contents($remote_file)){
 ?>
 ```
 
-http://182.168.2.2/file.txt
+**`http://182.168.2.2/file.txt`**
 
 ```
-file_put_contents('1.txt','hello world '.time());
+file_put_contents('index.php','hello world '.time(),FILE_APPEND);
+//FILE_APPEND追加写入
 ```
-
 
