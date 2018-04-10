@@ -20,6 +20,23 @@ exec函数
 知识点：在使用这种方法执行系统外部命令时，你要确保shell_exec函数可用，否则是无法使用这种反撇号执行系统外部命令的。
 ```
 
+```
+root@kali:/var/www/html# cat 2.php
+<?php
+system('id');
+echo exec('id')."\n";
+echo shell_exec("id");
+echo `id`;
+?>
+
+root@kali:/var/www/html# curl http://localhost/2.php
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
+
+
 
 
 #### 代码执行
