@@ -1,25 +1,10 @@
 ### 命令执行函数
+常见：
+```
 system()
+exec()
+反撇号` eg: echo `dir`;//你要确保shell_exec函数可用，否则是无法使用这种反撇号执行系统外部命令的。
 ```
-说明：执行外部程序并显示输出资料。
-语法：string system(string command, int [return_var]);
-返回值: 字符串
-```
-exec函数
-```
-说明：执行外部程序。
-
-语法：string exec(string command, string [array], int [return_var]);
-
-返回值: 字符串
-```
-反撇号`（和~在同一个键）
-```
-执行系统外部命令,代码如下:echo `dir`;
-
-知识点：在使用这种方法执行系统外部命令时，你要确保shell_exec函数可用，否则是无法使用这种反撇号执行系统外部命令的。
-```
-
 ```
 root@kali:/var/www/html# cat 2.php
 <?php
@@ -29,15 +14,31 @@ echo shell_exec("id");
 echo `id`;
 ?>
 
-root@kali:/var/www/html# curl http://localhost/2.php
+root@kali:/var/www/html# php 2.php
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
-
-
+无回显的`popen()`
+```
+root@kali:/var/www/html# cat 123.php
+<?php
+$fp = popen("/bin/cat /flag.txt >123.txt","r");
+?>
+root@kali:/var/www/html# php 123.php
+root@kali:/var/www/html# cat 123.txt
+16dee3a64a607c423fdfd866be7c3762
+```
+无回显的`passthru`
+```
+root@kali:/var/www/html# cat passthru.php
+<?php passthru("cat /flag.txt >3444.txt");?>
+root@kali:/var/www/html# php passthru.php
+root@kali:/var/www/html# cat 3444.txt 
+16dee3a64a607c423fdfd866be7c3762
+```
 
 #### 代码执行
 
