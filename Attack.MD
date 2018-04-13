@@ -73,4 +73,14 @@ POST:ipaddr=/tmp %26 cat /flag.txt
 POST:ipaddr=/tmp %26%26 cat /flag.txt
 ```
 
+## 常规漏洞写不死马
+
+
+
+
+### 对抗不死马
+根据日志发现攻击日志。
+```
+while (true);do echo test >/var/www/html/shell.php;done &
+```
 
