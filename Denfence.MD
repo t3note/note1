@@ -10,4 +10,6 @@ sed -i "s/原字符串/新字符串/g" `grep 原字符串 -rl /var/www/html`
 sed -i "s/eval(/intval(/g" `grep eval -rl /var/www/html`
 sed -i "s/intval(/@intval(/g" `grep val -rl ./`
 sed -i "s/<?php/<?php\n\n\n/g" `grep php -rl ./`
+//美元符号用右斜杠转义
+sed -i "s/\$p/1/g" `grep \$ -rl ./`
 ```
