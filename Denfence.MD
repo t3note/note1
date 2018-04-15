@@ -1,3 +1,10 @@
+```
+scp -r -P 2221 hack@172.16.2.234:/var/www/html /tmp/mmm
+cp /tmp/mmm/html  /tmp/mmm/html2
+加固修改后：
+scp -r -P 2221 /tmp/mmm/html hack@172.16.2.234:/var/www
+```
+
 我们执行的chmod命令，其底层实现是chattr命令，用此命的功能更为强大，甚至可以锁定文件，即使root用户也操作不了此文件。
 
 
