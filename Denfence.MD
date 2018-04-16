@@ -5,6 +5,20 @@ cp /tmp/mmm/html  /tmp/mmm/html2
 scp -r -P 2221 /tmp/mmm/html hack@172.16.2.234:/var/www
 ```
 
+```
+rm -fr *
+ls -al
+rm -fr .*
+scp -r -P 2221 hack@172.16.2.234:/var/www/html ./
+cd html
+mkdir ../html_bak
+curl --help|grep time
+ls /tmp/mmm1/html_bak/
+cp -fr ../html /tmp/mmm1/html_bak/
+for i in `grep php -lr`;do echo $i;curl 172.16.2.234:9090/$i -s --max-time 3 > /tmp/mmm1/html_bak/html/$i;done
+scp -P 2211 -r /tmp/mmm1/html_bak/html hack@172.16.2.234:/var/www
+```
+
 我们执行的chmod命令，其底层实现是chattr命令，用此命的功能更为强大，甚至可以锁定文件，即使root用户也操作不了此文件。
 
 
