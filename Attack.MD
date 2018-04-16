@@ -155,7 +155,9 @@ bb
 ```
 ### 日志干扰法
 ```
-while true;do curl --data "kdjwekk=dwddw" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0" http://172.16.2.234:8021/dvwa/vulnerabilities/fi/source/medium.php;curl --data "jkd=wfdwef" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0" http://172.16.2.234:8022/dvwa/vulnerabilities/fi/source/medium.php;echo 1;sleep 1;done 
+grep php -lr|grep vulnerabilities > list.txt
+
+while true;do for u in `cat list.txt`;do curl --data "kdjwekk=dwddw" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0" http://172.16.2.234:8021/$u;curl --data "jkd=wfdwef" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0" http://172.16.2.234:8011/$u;echo 1;done;done
 ```
 
 
