@@ -73,7 +73,7 @@ proc_open()
 ``
 ```
 
-**eg. 2.php**
+**eg. 1.php**
 
 ```
 root@3cbe3e36a767:/# cat 1.php
