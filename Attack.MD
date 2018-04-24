@@ -312,16 +312,18 @@ bash 1.sh >>2.txt
 leafpad 2.txt
 ```
 编辑，去掉多余部分，留下每行flag：
+
 ```
 for i in `cat flag.txt`;do curl 172.16.2.234:8888/commit.php --data "myid=001&flag=$i" -s --cookie "PHPSESSID=fl51bmlkjhiblfttram3fg76n1";done
 ```
+
 如果题目有提交间隔限制，如10s
-```
+
 vi编辑，去掉多余部分，留下每行flag：
 ```
 for i in `cat flag.txt`;do curl 172.16.2.234:8888/commit.php --data "myid=001&flag=$i" -s --cookie "PHPSESSID=fl51bmlkjhiblfttram3fg76n1";sleep 11s;done
 ```
-```
+
 #### if题目要求提交ip和flag
 ```
 root@kali:/# cat 1
