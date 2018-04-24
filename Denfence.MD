@@ -13,6 +13,10 @@ l=${#d}
   fi
 done
 ```
+一条命令：
+```
+cp /var/www/html ./html;while true;do d=`diff -r ./html /var/www/html`;l=${#d};if (($l != "0"));then echo $d;rm -fr /var/www/html;cp -fr ./html /var/www;fi;done
+```
 ```
 scp -r -P 2221 hack@172.16.2.234:/var/www/html /tmp/mmm
 cp /tmp/mmm/html  /tmp/mmm/html2
