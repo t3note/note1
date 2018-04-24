@@ -76,7 +76,7 @@ proc_open()
 **eg. 2.php**
 
 ```
-root@kali:/var/www/html# cat 2.php
+root@3cbe3e36a767:/# cat 1.php
 <?php
 system('id');
 passthru('id');
@@ -84,12 +84,12 @@ echo exec('id')."\n";
 echo shell_exec("id");
 echo `id`;
 ?>
-
-root@kali:/var/www/html# php 2.php
-uid=33(www-data) gid=33(www-data) groups=33(www-data)
-uid=33(www-data) gid=33(www-data) groups=33(www-data)
-uid=33(www-data) gid=33(www-data) groups=33(www-data)
-uid=33(www-data) gid=33(www-data) groups=33(www-data)
+root@3cbe3e36a767:/# php 1.php
+uid=0(root) gid=0(root) groups=0(root)
+uid=0(root) gid=0(root) groups=0(root)
+uid=0(root) gid=0(root) groups=0(root)
+uid=0(root) gid=0(root) groups=0(root)
+uid=0(root) gid=0(root) groups=0(root)
 ```
 
 `无回显的popen()`
