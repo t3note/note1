@@ -79,6 +79,7 @@ proc_open()
 root@kali:/var/www/html# cat 2.php
 <?php
 system('id');
+passthru('id');
 echo exec('id')."\n";
 echo shell_exec("id");
 echo `id`;
@@ -103,15 +104,6 @@ root@kali:/var/www/html# cat 123.txt
 16dee3a64a607c423fdfd866be7c3762
 ```
 
-`无回显的passthru`
-
-```
-root@kali:/var/www/html# cat passthru.php
-<?php passthru("cat /flag.txt >3444.txt");?>
-root@kali:/var/www/html# php passthru.php
-root@kali:/var/www/html# cat 3444.txt 
-16dee3a64a607c423fdfd866be7c3762
-```
 
 ##### 4) 文件包含函数
 ```
