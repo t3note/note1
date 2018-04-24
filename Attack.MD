@@ -46,7 +46,9 @@ preg_replace()
 ```
 ```
 create_function()  
-//func =create_function('',"system('ls -al');");$func();
+//
+
+$func =create_function('',"system('ls -al');");$func();
 ```
 ```
 call_user_func() / call_user_func_array()
