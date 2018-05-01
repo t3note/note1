@@ -47,7 +47,7 @@ def analyze_docker_json(eachinfo):
 
 
 
-os.system("docker ps -aq >/tmp/s.txt")
+os.system("docker ps -q >/tmp/s.txt")
 
 allpc=[]
 
