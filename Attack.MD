@@ -1,6 +1,6 @@
 ## 先准备一款只能被自己利用的一句话，如md5加密的马子
 ```
-root@kali:/tmp/2/html# echo -n v5est0r|md5sum
+root@kali:/tmp/2/html# echo -n v5est0r|md5sum  #一定要-n去掉echo输出的换行
 10972d718c21fdc8718efbaa8e67740e  -
 
 vi .index.php
