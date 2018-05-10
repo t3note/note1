@@ -1,7 +1,7 @@
 ### 流量转发机制
 - iptables
 
-- ssh -R <local port>:<remote host>:<remote port> <SSH hostname>
+- `ssh -R <local port>:<remote host>:<remote port> <SSH hostname>`
 
 
 从我们的靶机连接kali的ssh，将靶机的80映射到kali的80，源码放到kali。
