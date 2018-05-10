@@ -424,6 +424,21 @@ bb
 bb
 bb
 ```
+
+```
+root@kali:~# cat 1.txt
+1:sss1fqwqfwfqw
+2:ssss2qwfqfiss
+3:ssss3fqwqwfwf
+4:dasdafqqwfwef
+5:qwfqwfqwffewf
+root@kali:~# for i in `awk -F: '{print "ip=192.168.1."$1"&flag="$2}' 1.txt`;do echo $i;done
+ip=192.168.1.1&flag=sss1fqwqfwfqw
+ip=192.168.1.2&flag=ssss2qwfqfiss
+ip=192.168.1.3&flag=ssss3fqwqwfwf
+ip=192.168.1.4&flag=dasdafqqwfwef
+ip=192.168.1.5&flag=qwfqwfqwffewf
+```
 ### 日志干扰法
 ```
 grep php -lr|grep vulnerabilities > list.txt
