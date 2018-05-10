@@ -18,4 +18,5 @@ curl 127.0.0.1/1.php -b "1=ls"
 curl 192.168.0.95/1.php -s -H "1:ls"
 (数组取值加上HTTP_，大写)
 
+$src = file_get_contents('php://input');
 ```
