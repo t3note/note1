@@ -1,3 +1,5 @@
+### 流量转发机制
+iptables
 ## 先准备一款只能被自己利用的一句话，如md5加密的马子
 ```
 root@kali:/tmp/2/html# echo -n v5est0r|md5sum  #一定要-n去掉echo输出的换行
