@@ -54,3 +54,23 @@ sed -i "s/<?php/<?php\n\n\n/g" `grep php -rl ./`
 //美元符号用右斜杠转义
 sed -i "s/\$p/1/g" `grep \$ -rl ./`
 ```
+### 批量加固
+```
+sed -i "s/正则/@intval/g" `grep p -lr /var/www/html`
+|在正则里表示或（需要转义\|），/在sed里面我们用作分隔符
+
+root@kali:/tmp# cat 2.txt
+eval(666666666666
+6666system6eval
+shell_exec888
+exec666
+root@kali:/tmp# sed -i 's/eval\|system\|exec/@intval/g' 2.txt
+root@kali:/tmp# cat 2.txt
+@intval(666666666666
+6666@intval6@intval
+shell_@intval888
+@intval666
+```
+```
+sed -i "s/eval\|system\|exec\|assert\|file\|open\|include\|require\|passthru\|\`\|preg\|func/@intval/g" `grep p -lr`
+```
