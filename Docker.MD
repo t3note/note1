@@ -1,3 +1,10 @@
+### docker-compose启动项
+
+```
+docker rm -f `docker ps -aq`
+docker-compose -f ~/compose.yml up -d
+```
+
 ### docker的持久化数据存储
 ```
 docker exec -it test_1 /bin/bash
