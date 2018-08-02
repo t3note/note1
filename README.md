@@ -4,6 +4,11 @@ cacls.exe c:\www /e /t /g everyone:F #把c盘设置为everyone有所有权限
 cacls.exe d: /e /t /g admin:F #把d盘设置为admin有所有权限
 ```
 以下命令可以实现在命令行中设置用户属性为密码永不过期（需要安装wmic.exe环境，执行命令时，请将半角双引号中的“用户名”换成实际的用户名，windows7中验证通过）：
+Rsync使用sftp断点续传：
+```
+rsync -P --rsh=ssh -e 'ssh -p 6666' ./213.7z root@1.1.1.1:/home
+rsync -P --rsh=ssh test@192.168.10.132:/home/test/Desktop/123.7z ./
+```
 ```
 wmic.exe UserAccount Where Name="用户名" Set PasswordExpires="false"
 ```
